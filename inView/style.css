@@ -1,0 +1,23 @@
+.div{
+    background-color: #ff6657;
+    height: 200px;
+}
+
+.div1{
+    background-color: #ff1;
+    height: 520px;
+}
+
+.div2{
+    background-color: #000;
+    height: 300px;
+}
+
+.div2 p {
+    color: #fff;
+    margin-top: 0px;
+}
+
+body{
+    margin: 0 auto;
+}
