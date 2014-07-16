@@ -1,0 +1,12 @@
+body{
+    margin: 0;
+}
+
+.img1, .img2, .img3, .img4{
+    width: 30%;
+    height: 30%;
+}
+
+p{
+    width: 405px;
+}
