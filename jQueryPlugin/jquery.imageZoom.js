@@ -9,10 +9,10 @@
             borderColor: "#888"
         }, options);
 
-        var lensStyle = "background-position: 0px 0px;width: " + String(settings.lensSize)
-            + "px;height: " + String(settings.lensSize) + "px;float: left;display: none;cursor: none;border-radius: "
-            + String(settings.lensSize / 2 + settings.borderSize)
-            + "px;float: left;display: none;border: " + String(settings.borderSize) + "px solid "
+        var lensStyle = "background-position: 0px 0px;width: " + settings.lensSize
+            + "px;height: " + settings.lensSize + "px;float: left;display: none;cursor: none;border-radius: "
+            + (settings.lensSize / 2 + settings.borderSize)
+            + "px;float: left;display: none;border: " + settings.borderSize + "px solid "
             + settings.borderColor + ";background-repeat: no-repeat;position: absolute;";
 
         return this.each(function() {
@@ -45,11 +45,11 @@
                 }
                 else {
                     lens.show();
-                    leftPos = String(((e.pageX - offset.left) * widthRatio - lens.width() / 2) * (-1));
-                    topPos = String(((e.pageY - offset.top) * heightRatio - lens.height() / 2) * (-1));
+                    leftPos = ((e.pageX - offset.left) * widthRatio - lens.width() / 2) * (-1);
+                    topPos = ((e.pageY - offset.top) * heightRatio - lens.height() / 2) * (-1);
                     lens.css({ backgroundPosition: leftPos + 'px ' + topPos + 'px' });
-                    leftPos = String(e.pageX - lens.width() / 2);
-                    topPos = String(e.pageY - lens.height() / 2);
+                    leftPos = e.pageX - lens.width() / 2;
+                    topPos = e.pageY - lens.height() / 2;
                     lens.css({ left: leftPos + 'px', top: topPos + 'px' });
                 }
             }
