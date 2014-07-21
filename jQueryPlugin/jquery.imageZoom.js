@@ -13,8 +13,7 @@
         return this.each(function() {
             obj = $(this);
             offset = $(this).offset();
-            lens = $('<div style="' + lensStyle + '" class="' + settings.lensClass + '"></div>')
-                .appendTo($('body'));
+            lens = $('<div style="' + lensStyle + '"></div>').appendTo($('body'));
             imageSrc = settings.imageSrc ? settings.imageSrc : $(this).attr('src');
             imageTag = '<img style="display:none;" src="' + imageSrc + '">';
             widthRatio = 0;
@@ -26,24 +25,24 @@
             }).appendTo($(this).parent());
             lens.css({ backgroundImage: "url('" + imageSrc + "')" });
 
-            lens.mousemove(setPosition);
-            $(this).mousemove(setPosition);
+            lens.mousemove(changePosition);
+            $(this).mousemove(changePosition);
             lens.mouseout(outOfImage);
             $(this).mouseout(outOfImage);
         });
 
-        function setPosition(e) {
-            var leftPos = parseInt(e.pageX - offset.left);
-            var topPos = parseInt(e.pageY - offset.top);
+        function changePosition(e) {
+            var leftPosition = parseInt(e.pageX - offset.left);
+            var topPosition = parseInt(e.pageY - offset.top);
 
-            if (!(leftPos < 0 || topPos < 0 || leftPos > obj.width() || topPos > obj.height())) {
+            if (!(leftPosition < 0 || topPosition < 0 || leftPosition > obj.width() || topPosition > obj.height())) {
                 lens.show();
-                leftPos = ((e.pageX - offset.left) * widthRatio - lens.width() / 2) * (-1);
-                topPos = ((e.pageY - offset.top) * heightRatio - lens.height() / 2) * (-1);
+                leftPosition = ((e.pageX - offset.left) * widthRatio - lens.width() / 2) * (-1);
+                topPosition = ((e.pageY - offset.top) * heightRatio - lens.height() / 2) * (-1);
                 lens.css({ backgroundPosition: leftPos + 'px ' + topPos + 'px' });
-                leftPos = e.pageX - lens.width() / 2;
-                topPos = e.pageY - lens.height() / 2;
-                lens.css({ left: leftPos + 'px', top: topPos + 'px' });
+                leftPosition = e.pageX - lens.width() / 2;
+                topPosition = e.pageY - lens.height() / 2;
+                lens.css({ left: leftPosition + 'px', top: topPosition + 'px' });
             }
         }
 
